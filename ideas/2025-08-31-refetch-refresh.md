@@ -5,6 +5,11 @@ I had an error related to this snippet in my code:
 ```js
 refetch() || router.refresh();
 ```
+# Here’s why it fails:
+
+If refetch is undefined, calling refetch() will throw an error before router.refresh() even runs.
+The || operator only checks values, but you’re calling refetch() first, so it crashes.
+
 # My Solution
 ```js
 if (refetch) {
